@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Initialize 3D Interactive Background (Vanta.NET)
+    if (typeof VANTA !== 'undefined') {
+        VANTA.NET({
+            el: "#vanta-hero",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x3b82f6,
+            backgroundColor: 0x0b0f19,
+            backgroundAlpha: 0,
+            points: 12.00,
+            maxDistance: 22.00,
+            spacing: 18.00
+        });
+    }
+
     // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');
     const isDark = localStorage.getItem('theme') !== 'light';
