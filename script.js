@@ -45,9 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Stats Logic
-    let stats = JSON.parse(localStorage.getItem('aletheia_stats')) || { searches: 0, fake: 0, real: 0 };
+    let stats = JSON.parse(localStorage.getItem('aletheia_stats')) || { searches: 0, fake: 0, real: 0, history: [] };
+    if (!stats.history) stats.history = [];
+    
     const statSearches = document.getElementById('stat-searches');
     const statFake = document.getElementById('stat-fake');
+    const historySection = document.getElementById('history-section');
+    const historyList = document.getElementById('history-list');
 
     function updateStatsDisplay() {
         if (statSearches && statFake) {
@@ -56,9 +60,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function renderHistory() {
+        if (!userProfile || userProfile.style.display === 'none') {
+            if (historySection) historySection.style.display = 'none';
+            return;
+        }
+        
+        if (stats.history.length === 0) {
+            if (historySection) historySection.style.display = 'none';
+            return;
+        }
+
+        if (historySection) historySection.style.display = 'block';
+        if (historyList) {
+            historyList.innerHTML = '';
+            stats.history.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'history-card glass-panel';
+                const isFake = item.result === 'FAKE';
+                div.innerHTML = `
+                    <div class="history-text">"${item.text}"</div>
+                    <div class="history-badge ${isFake ? 'fake' : 'real'}">${isFake ? '🔴 FAKE' : '🟢 REAL'}</div>
+                `;
+                historyList.appendChild(div);
+            });
+        }
+    }
+
     function saveStats() {
         localStorage.setItem('aletheia_stats', JSON.stringify(stats));
         updateStatsDisplay();
+        renderHistory();
     }
     
     // Initial display
@@ -94,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             authButtons.style.display = 'none';
             userProfile.style.display = 'flex';
             userGreeting.innerText = `Hello ${username}`;
+            renderHistory();
             console.log("Modal closed, redirect simulated");
         }, 1500);
     });
@@ -103,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userProfile.style.display = 'none';
         userGreeting.innerText = '';
         modalInputs.forEach(input => input.value = '');
+        renderHistory();
     });
 
     // Analyze Logic
@@ -156,6 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     stats.real += 1;
                 }
+                
+                // Add to history
+                const snippet = text.length > 60 ? text.substring(0, 60) + '...' : text;
+                stats.history.unshift({ text: snippet, result: data.result });
+                if (stats.history.length > 5) stats.history.pop(); // Keep only last 5
+                
                 saveStats();
             }
             

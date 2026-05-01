@@ -354,6 +354,83 @@ textarea:focus {
     color: var(--text-color);
 }
 
+/* Ambient Background */
+.bg-blobs {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.4;
+    animation: float 20s infinite alternate ease-in-out;
+}
+.blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: rgba(59, 130, 246, 0.4); }
+.blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: rgba(139, 92, 246, 0.4); animation-delay: -5s; }
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* History Card */
+.history-card {
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    gap: 15px;
+}
+.history-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+.history-badge {
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    min-width: 80px;
+    text-align: center;
+}
+.history-badge.fake { background: rgba(239, 68, 68, 0.15); color: var(--danger-color); }
+.history-badge.real { background: rgba(16, 185, 129, 0.15); color: var(--success-color); }
+
+/* Footer */
+.footer {
+    width: 100%;
+    margin-top: auto;
+    padding: 40px 20px;
+    border-top: 1px solid var(--panel-border);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 20px;
+}
+.footer-logo { font-weight: 800; color: var(--primary-color); font-size: 1.2rem; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { color: var(--text-color); text-decoration: none; font-size: 0.9rem; opacity: 0.8; transition: color 0.2s; }
+.footer-links a:hover { opacity: 1; color: var(--primary-color); }
+.footer-bottom { text-align: center; font-size: 0.85rem; opacity: 0.6; padding-top: 20px; border-top: 1px solid var(--panel-border); max-width: 1000px; margin: 0 auto; }
+
 @media (max-width: 600px) {
     .navbar {
         flex-direction: column;
@@ -362,4 +439,5 @@ textarea:focus {
     .hero h1 {
         font-size: 2.5rem;
     }
+    .footer-content { flex-direction: column; gap: 15px; }
 }

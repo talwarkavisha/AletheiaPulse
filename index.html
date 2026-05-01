@@ -9,6 +9,12 @@
 </head>
 <body class="dark-mode">
 
+    <!-- Ambient Background -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">AletheiaPulse</div>
@@ -73,6 +79,14 @@
         </div>
     </section>
 
+    <!-- History Section -->
+    <section class="history-section" id="history-section" style="display: none; width: 100%; max-width: 800px; padding: 0 20px; margin-bottom: 60px;">
+        <h3 style="margin-bottom: 15px; font-size: 1.2rem;">Recent Analyses</h3>
+        <div id="history-list" style="display: flex; flex-direction: column; gap: 10px;">
+            <!-- History cards will be injected here -->
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features">
         <div class="feature-card glass-panel">
@@ -104,6 +118,21 @@
             <p id="modal-msg" style="color: var(--success-color); margin-top: 10px; display: none;">Success! Redirecting...</p>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer glass-panel">
+        <div class="footer-content">
+            <div class="footer-logo">AletheiaPulse</div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">API Docs</a>
+                <a href="#">Report Issue</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AletheiaPulse AI. All rights reserved.
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
