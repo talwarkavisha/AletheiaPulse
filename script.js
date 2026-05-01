@@ -1,23 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Initialize 3D Interactive Background (Vanta.GLOBE)
-    if (typeof VANTA !== 'undefined' && VANTA.GLOBE) {
-        VANTA.GLOBE({
-            el: "#vanta-hero",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00,
-            color: 0x3b82f6,
-            color2: 0x8b5cf6,
-            size: 1.20,
-            backgroundColor: 0x0,
-            backgroundAlpha: 0
-        });
-    }
+
 
     // Theme Toggle
     const themeBtn = document.getElementById('theme-toggle');

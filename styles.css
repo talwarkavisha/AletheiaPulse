@@ -15,11 +15,12 @@ body:not(.dark-mode) {
     /* Light Theme Variables */
     --bg-color: #f8fafc;
     --text-color: #0f172a;
-    --panel-bg: rgba(255, 255, 255, 0.8);
+    --panel-bg: rgba(255, 255, 255, 0.85);
     --panel-border: rgba(0, 0, 0, 0.1);
     --primary-color: #2563eb;
     --primary-hover: #1d4ed8;
-    --input-bg: rgba(241, 245, 249, 0.8);
+    --input-bg: rgba(241, 245, 249, 0.9);
+    background-image: linear-gradient(rgba(248, 250, 252, 0.88), rgba(248, 250, 252, 0.88)), url('background.png');
 }
 
 * {
@@ -31,6 +32,10 @@ body:not(.dark-mode) {
 
 body {
     background-color: var(--bg-color);
+    background-image: linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.88)), url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
     min-height: 100vh;
