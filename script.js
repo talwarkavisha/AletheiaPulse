@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Initialize 3D Interactive Background (Vanta.NET)
-    if (typeof VANTA !== 'undefined') {
-        VANTA.NET({
+    // Initialize 3D Interactive Background (Vanta.GLOBE)
+    if (typeof VANTA !== 'undefined' && VANTA.GLOBE) {
+        VANTA.GLOBE({
             el: "#vanta-hero",
             mouseControls: true,
             touchControls: true,
@@ -12,11 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
             scale: 1.00,
             scaleMobile: 1.00,
             color: 0x3b82f6,
-            backgroundColor: 0x0b0f19,
-            backgroundAlpha: 0,
-            points: 12.00,
-            maxDistance: 22.00,
-            spacing: 18.00
+            color2: 0x8b5cf6,
+            size: 1.20,
+            backgroundColor: 0x0,
+            backgroundAlpha: 0
         });
     }
 
