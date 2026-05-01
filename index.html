@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AletheiaPulse - Truth Detection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">AletheiaPulse</div>
+        <div class="nav-links">
+            <a href="#analyze">Analyze</a>
+            <button class="nav-btn theme-toggle" id="theme-toggle">☀️ Light Mode</button>
+            <div id="auth-buttons" style="display: flex; gap: 20px;">
+                <button class="nav-btn" id="login-btn">Login</button>
+                <button class="nav-btn primary-btn" id="register-btn">Register</button>
+            </div>
+            <div id="user-profile" style="display: none; align-items: center; gap: 15px;">
+                <div style="display: flex; flex-direction: column; align-items: flex-end; font-size: 0.85rem;">
+                    <span id="user-greeting" style="font-weight: 600; color: var(--primary-color); font-size: 1rem;"></span>
+                    <span style="color: var(--text-color); opacity: 0.8;">Searches: <span id="stat-searches">0</span> | Fake: <span id="stat-fake">0</span></span>
+                </div>
+                <button class="nav-btn" id="logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AletheiaPulse</h1>
+            <h2>Real-Time Fake News Detection System</h2>
+            <p>AI-powered truth detection platform for crisis and misinformation control.</p>
+            <div class="badges">
+                <span class="badge">⚡ Real-Time Detection</span>
+                <span class="badge">🧠 AI Intelligence</span>
+                <span class="badge">🚨 Crisis Monitoring</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analyze Section -->
+    <section class="analyze-section" id="analyze">
+        <div class="analyze-container glass-panel">
+            <h3>Verify Authenticity</h3>
+            <textarea id="news-input" placeholder="Paste news article, tweet, or message to verify authenticity..."></textarea>
+            <button id="analyze-btn" class="action-btn">Analyze News</button>
+        </div>
+    </section>
+
+    <!-- Result Display Section -->
+    <section class="result-section" id="result-section" style="display: none;">
+        <div class="result-card" id="result-card">
+            <div class="loading" id="loading-spinner">
+                <div class="spinner"></div>
+                <p>Analyzing with AletheiaPulse AI...</p>
+            </div>
+            
+            <div class="result-content" id="result-content" style="display: none;">
+                <div class="result-header">
+                    <h3 id="result-status">🟢 VERIFIED TRUE</h3>
+                    <span class="confidence" id="result-confidence">Confidence: 92%</span>
+                </div>
+                <div class="result-explanation">
+                    <h4>AI Explanation:</h4>
+                    <p id="result-reason">The content lacks credible sources and contains exaggerated claims.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card glass-panel">
+            <h4>Real-Time Detection</h4>
+            <p>Analyze breaking news and viral content instantly with our sub-second inference engine.</p>
+        </div>
+        <div class="feature-card glass-panel">
+            <h4>AI-Based Classification</h4>
+            <p>Utilizes advanced NLP to detect subtle linguistic patterns of misinformation.</p>
+        </div>
+        <div class="feature-card glass-panel">
+            <h4>Crisis Monitoring</h4>
+            <p>Prioritizes analysis during critical events to prevent panic and confusion.</p>
+        </div>
+        <div class="feature-card glass-panel">
+            <h4>Instant Alerts</h4>
+            <p>Receive notifications when trending topics show high levels of manipulated content.</p>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content glass-panel">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title">Login</h2>
+            <input type="text" placeholder="Username or Email" class="modal-input">
+            <input type="password" placeholder="Password" class="modal-input">
+            <button class="action-btn" id="modal-action-btn">Submit</button>
+            <p id="modal-msg" style="color: var(--success-color); margin-top: 10px; display: none;">Success! Redirecting...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
